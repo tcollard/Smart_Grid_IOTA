@@ -1,0 +1,29 @@
+TO DO
+
+GLOBAL:
+	- Recup battery/trader -> Claudio
+	- Recup API -> Simon
+	- Connect to API
+	- Send msg to API
+	- Check and Update Balance
+
+GENERATOR:
+	- 
+
+CONSUMER:
+	- Create consumer_Object :
+		- ID
+		- Seed
+		- Wallet
+		- Energy needed
+		- Delta time
+		- Limit price max
+		- Mode : if price over than expectation
+								-> switch of
+								-> continue till the end
+								-> check for new order (lower)
+	
+	- Create msg type and fill it
+
+STORAGE:
+	- Check what is done
