@@ -4,4 +4,3 @@ WORKDIR /front
 VOLUME /front
 COPY . .
 CMD npm install && npm run dev
-#CMD /bin/bash
