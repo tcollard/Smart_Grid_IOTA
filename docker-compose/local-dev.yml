@@ -1,0 +1,52 @@
+version: '3.7'
+
+networks:
+  iota-sg-local-dev:
+    driver: bridge
+
+services:
+
+  iota-sg-dev-front:
+    container_name: iota-sg-dev-front
+    image: iota-sg-dev-front
+    build:
+      context: ../front
+      dockerfile: ./docker/local-dev.dockerfile
+    volumes:
+      - ../front:/app
+    environment:
+      FRONT_PROTOCOL: http
+      FRONT_URL: localhost
+      FRONT_PORT: 8080
+      API_PROTOCOL: http
+      API_URL: localhost
+      API_PORT: 3000
+    restart: unless-stopped
+    ports:
+      - '8080:8080'
+    depends_on:
+      - iota-sg-dev-server
+    networks:
+      - iota-sg-local-dev
+
+  iota-sg-dev-server:
+    container_name: iota-sg-dev-server
+    image: iota-sg-dev-server
+    build:
+      context: ../server
+      dockerfile: ./docker/local-dev.dockerfile
+    volumes:
+      - ../server:/app
+    environment:
+      FRONT_PROTOCOL: http
+      FRONT_URL: localhost
+      FRONT_PORT: 8080
+      API_PORT: 3000
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+      # - '5900:5900'
+    depends_on:
+      - iota-sg-dev-db
+    networks:
+      - iota-sg-local-dev
