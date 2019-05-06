@@ -1,5 +1,4 @@
 var net = require('net');
-var ping = require ("net-ping");
 const storage = require('../storage');
 const client = new net.Socket()
 const colors = require('colors');
