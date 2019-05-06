@@ -13,4 +13,4 @@ open new terminal for each actors:
 - generator_prod `node solar_panel.js`
 
 # BUILD AND RUN WITH DOCKER
-docker-compose --file local-dev.yml build && docker-compose --file local-dev.yml up --force-recreate
+docker-compose --file docker-compose/local-dev.yml build && docker-compose --file docker-compose/local-dev.yml up --force-recreate

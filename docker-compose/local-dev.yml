@@ -10,12 +10,12 @@ services:
     container_name: iota-sg-dev-front
     image: iota-sg-dev-front
     build:
-      context: front
+      context: ../front
       dockerfile: ./docker/local-dev.dockerfile
-    volumes:
-      - type: bind
-        source: front
-        target: /front
+    #volumes:
+    #  - type: bind
+    #    source: front
+    #    target: /front
     environment:
       FRONT_PROTOCOL: http
       FRONT_URL: localhost
@@ -35,12 +35,12 @@ services:
     container_name: iota-sg-dev-server
     image: iota-sg-dev-server
     build:
-      context: server
+      context: ../server
       dockerfile: ./docker/local-dev.dockerfile
-    volumes:
-      - type: bind
-        source: server
-        target: /server
+   # volumes:
+   #   - type: bind
+   #     source: server
+   #     target: /server
     environment:
       FRONT_PROTOCOL: http
       FRONT_URL: localhost
