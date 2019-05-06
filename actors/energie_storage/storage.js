@@ -1,7 +1,7 @@
 const IOTA = require('iota.lib.js');
-const network = require('../utils/network.js.js');
-const iotaTx = require('../utils/iotaTx.js.js');
-const globValue = require('../storage.js.js')
+const network = require('../utils/network');
+const iotaTx = require('../utils/iotaTx');
+const globValue = require('../storage')
 
 var client = undefined;
 var iota = new IOTA({
