@@ -12,10 +12,10 @@ services:
     build:
       context: front
       dockerfile: ./docker/local-dev.dockerfile
-    volumes:
-      - type: bind
-        source: front
-        target: /front
+   # volumes:
+   #   - type: bind
+   #     source: ./front
+   #     target: /front
     environment:
       FRONT_PROTOCOL: http
       FRONT_URL: localhost
@@ -37,10 +37,10 @@ services:
     build:
       context: server
       dockerfile: ./docker/local-dev.dockerfile
-    volumes:
-      - type: bind
-        source: server
-        target: /server
+   # volumes:
+   #   - type: bind
+   #     source: ./server
+   #     target: /server
     environment:
       FRONT_PROTOCOL: http
       FRONT_URL: localhost
@@ -49,6 +49,6 @@ services:
     restart: unless-stopped
     ports:
       - '1071:1071'
-      # - '5900:5900'
+   #   # - '5900:5900'
     networks:
       - iota-sg-local-dev
