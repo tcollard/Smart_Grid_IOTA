@@ -1,0 +1,3 @@
+docker rm iota-sg-dev-server iota-sg-dev-consumer iota-sg-dev-front \
+&& docker-compose --file docker-compose/local-dev.yml build --no-cache \
+&& docker-compose --file docker-compose/local-dev.yml up --force-recreate

@@ -7,7 +7,6 @@ var intervalConnect = false;
 function connect() {
 	client.connect({
 		port: storage.http_port,
-		host: storage.network_ip,
 	});
 }
 

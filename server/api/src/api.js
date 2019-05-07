@@ -1,6 +1,6 @@
 var net = require('net')
-// const express = require('express')
-// const app = express()
+const express = require('express')
+const app = express()
 const globValue = require('./storage.js')
 const network = require('./utils/network.js')
 const IOTA = require('iota.lib.js')
@@ -319,12 +319,13 @@ function update_request(str) {
 }
 
 async function main () {
-//  app.listen(globValue.http_port, function () {
-//    console.log('API listening on port', globValue.http_port)
-//  })
+//app.listen(globValue.http_port, function () {
+//  console.log('API listening on port', globValue.http_port)
+//})
 var server = net.createServer(function(socket) {
   socket_G = socket;
 	socket.on('data', async function(data) {
+		console.log('data: ', data)
 		var str = data.toString();
 		if (data.indexOf('connect:') >-1) {
 			console.log('REQUEST', requests);
@@ -343,7 +344,7 @@ var server = net.createServer(function(socket) {
         connection.sendUTF(JSON.stringify(requests));
       }
 	});
-}).listen(network.init_server(globValue.http_port, globValue.network_ip));
+}).listen(network.init_server(globValue.http_port));
 let connection;
 
 wsServer.on('request', function (request) {
