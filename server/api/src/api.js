@@ -251,8 +251,6 @@ function update_object(buyer, seller) {
 		requests.push(request);
 }
 
-
-
 function update_requests_stack(request) {
 	let equal = false;
 	for (var i = 0; i < requests.length; ++i) {

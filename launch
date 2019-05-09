@@ -1,3 +1,7 @@
-docker rm iota-sg-dev-server iota-sg-dev-consumer iota-sg-dev-front \
+docker stop iota-sg-dev-server || true && docker rm iota-sg-dev-server || true \
+&& docker stop iota-sg-dev-front || true && docker rm iota-sg-dev-front || true \
+&& docker stop iota-sg-dev-consumer || true && docker rm iota-sg-dev-consumer || true \
+&& docker stop iota-sg-dev-storage || true && docker rm iota-sg-dev-storage || true \
+&& docker stop iota-sg-dev-producer || true && docker rm iota-sg-dev-producer || true \
 && docker-compose --file docker-compose/local-dev.yml build --no-cache \
 && docker-compose --file docker-compose/local-dev.yml up --force-recreate

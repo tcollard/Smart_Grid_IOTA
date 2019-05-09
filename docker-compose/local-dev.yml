@@ -1,8 +1,8 @@
 version: '3.7'
 
-networks:
-  iota-sg-local-dev:
-    driver: bridge
+#networks:
+#  iota-sg-local-dev:
+#    driver: bridge
 
 services:
 
@@ -26,10 +26,10 @@ services:
     restart: unless-stopped
     ports:
       - '8080:8080'
-    depends_on:
-      - iota-sg-dev-server
-    networks:
-      - iota-sg-local-dev
+      - '3021:3021'
+    network_mode: host
+    #networks:
+    #  - iota-sg-local-dev
 
   iota-sg-dev-server:
     container_name: iota-sg-dev-server
@@ -46,10 +46,45 @@ services:
       FRONT_URL: localhost
       FRONT_PORT: 8080
       API_PORT: 1071
+    ports:
+      - '1071:1071'
+    network_mode: host
     restart: unless-stopped
-    networks:
-      - iota-sg-local-dev
-  iota-sg-consumer:
+    depends_on:
+      - iota-sg-dev-front
+    #networks:
+    #  - iota-sg-local-dev
+  iota-sg-dev-producer:
+    container_name: iota-sg-dev-producer
+    image: iota-sg-dev-producer
+    build:
+      context: ../actors
+      dockerfile: ./docker/local-dev.dockerfile
+    environment:
+      API_PORT: 1071
+    restart: unless-stopped
+    #networks:
+    #  - iota-sg-local-dev
+    network_mode: host
+    depends_on:
+      - iota-sg-dev-server
+    command: npm run start_producer
+  iota-sg-dev-storage:
+    container_name: iota-sg-dev-storage
+    image: iota-sg-dev-storage
+    build:
+      context: ../actors
+      dockerfile: ./docker/local-dev.dockerfile
+    environment:
+      API_PORT: 1071
+    restart: unless-stopped
+    #networks:
+    #  - iota-sg-local-dev
+    network_mode: host
+    depends_on:
+      - iota-sg-dev-producer
+    command: npm run start_storage
+  iota-sg-dev-consumer:
     container_name: iota-sg-dev-consumer
     image: iota-sg-dev-consumer
     build:
@@ -58,8 +93,9 @@ services:
     environment:
       API_PORT: 1071
     restart: unless-stopped
-    networks:
-      - iota-sg-local-dev
+    #networks:
+    #  - iota-sg-local-dev
+    network_mode: host
     depends_on:
-      - iota-sg-dev-server
+      - iota-sg-dev-storage
     command: npm run start_consumer
