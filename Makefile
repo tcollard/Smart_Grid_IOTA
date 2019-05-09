@@ -1,4 +1,4 @@
-all: stop clean build up
+all: build up
 
 stop:
 	@echo "STOP ALL"
@@ -21,3 +21,5 @@ build:
 
 up:
 	docker-compose --file docker-compose/local-dev.yml up --force-recreate
+
+re: stop clean build up
