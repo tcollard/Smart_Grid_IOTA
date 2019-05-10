@@ -22,4 +22,9 @@ build:
 up:
 	docker-compose --file docker-compose/local-dev.yml up --force-recreate
 
+init:
+	@cd ./front && npm install
+	@cd ./server && npm install
+	@cd ./actors && npm install
+
 re: stop clean build up
