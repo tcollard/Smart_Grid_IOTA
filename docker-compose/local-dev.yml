@@ -1,4 +1,4 @@
-version: '3.7'
+version: '2.1'
 
 #networks:
 #  iota-sg-local-dev:
@@ -23,6 +23,10 @@ services:
     expose:
       - '3021'
     network_mode: host
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://192.168.99.100:8080"]
+      interval: 30s
+      timeout: 10s
     #networks:
     #  - iota-sg-local-dev
 
@@ -56,9 +60,11 @@ services:
     #networks:
     #  - iota-sg-local-dev
     network_mode: host
-    depends_on:
-      - iota-sg-dev-server
     command: npm run start_producer
+    depends_on:
+      iota-sg-dev-front:
+        condition: service_healthy
+  
   iota-sg-dev-storage:
     container_name: iota-sg-dev-storage
     image: iota-sg-dev-storage
@@ -72,6 +78,10 @@ services:
     depends_on:
       - iota-sg-dev-producer
     command: npm run start_storage
+    depends_on:
+      iota-sg-dev-front:
+        condition: service_healthy
+  
   iota-sg-dev-consumer:
     container_name: iota-sg-dev-consumer
     image: iota-sg-dev-consumer
@@ -85,3 +95,6 @@ services:
     depends_on:
       - iota-sg-dev-storage
     command: npm run start_consumer
+    depends_on:
+      iota-sg-dev-front:
+        condition: service_healthy
