@@ -14,5 +14,5 @@ $> git clone https://github.com/tcollard/Smart_Grid_IOTA.git
 $> cd Smart_Grid_IOTA
 $> make
 ```
-Open your browser and go on `http:\\MACHINE_NAME_IP:8080`\
+Open your browser and go on `http://MACHINE_NAME_IP:8080`\
 To get the machine ip: `docker-machine ip MACHINE_NAME`
