@@ -1,14 +1,14 @@
 # Smart_Grid_IOTA
 PoC Smart Grid using IOTA tangle
 
-# CONFIG
+## CONFIG
 You need to install docker, docker-compose and create your docker machine.
 ```
 $> docker-machine create --driver virtualbox MACHINE_NAME
 $> eval $(docker-machine env MACHINE_NAME)
 ```
 
-# HOW TO RUN IT
+## HOW TO RUN IT
 ```
 $> git clone https://github.com/tcollard/Smart_Grid_IOTA.git
 $> cd Smart_Grid_IOTA
