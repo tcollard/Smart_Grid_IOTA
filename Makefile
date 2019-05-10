@@ -1,4 +1,4 @@
-all: build up
+all: init build up
 
 stop:
 	@echo "STOP ALL"
@@ -16,7 +16,7 @@ clean:
 	@docker rm iota-sg-dev-storage 2> /dev/null || true && echo "storage clean"
 	@docker rm iota-sg-dev-producer 2> /dev/null || true && echo "producer clean"
 
-build:
+build: init
 	docker-compose --file docker-compose/local-dev.yml build --no-cache
 
 up:
