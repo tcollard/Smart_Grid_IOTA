@@ -79,8 +79,8 @@ services:
       - iota-sg-dev-producer
     command: npm run start_storage
     depends_on:
-      iota-sg-dev-front:
-        condition: service_healthy
+      iota-sg-dev-producer:
+        condition: service_started
   
   iota-sg-dev-consumer:
     container_name: iota-sg-dev-consumer
@@ -96,5 +96,5 @@ services:
       - iota-sg-dev-storage
     command: npm run start_consumer
     depends_on:
-      iota-sg-dev-front:
-        condition: service_healthy
+      iota-sg-dev-storage:
+        condition: service_started
