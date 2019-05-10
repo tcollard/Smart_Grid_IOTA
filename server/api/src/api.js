@@ -323,17 +323,14 @@ async function main () {
 var server = net.createServer(function(socket) {
   socket_G = socket;
 	socket.on('data', async function(data) {
-		console.log('data: ', data)
 		var str = data.toString();
 		if (data.indexOf('connect:') >-1) {
-			console.log('REQUEST', requests);
 			request(socket, str.substring(str.indexOf(":") + 1));
 		}
 		else if (data.indexOf('update:') >-1) {
 			producer.power = update_request(str.substring(str.indexOf(":") + 1));
 		}
 		else {
-        console.log('DATA: \n', data, '\n');
 				get_request(JSON.parse(str));
 		}
 		if (consumer.channel == 0 && producer.channel == 0 && storage.channel == 0)
