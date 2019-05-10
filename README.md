@@ -1,5 +1,5 @@
 # Smart_Grid_IOTA
-PoC Smart Grid using IOTA tangle
+PoC Smart Grid using IOTA tangle and flash chanel to do micro transaction between actors
 
 ## CONFIG
 You need to install docker, docker-compose and create your docker machine.
