@@ -25,7 +25,7 @@ services:
     network_mode: host
     healthcheck:
       test: ["CMD", "curl", "-f", "http://192.168.99.100:8080"]
-      interval: 30s
+      interval: 10s
       timeout: 10s
     #networks:
     #  - iota-sg-local-dev
