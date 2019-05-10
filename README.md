@@ -11,3 +11,6 @@ open new terminal for each actors:
 - consumer `node consummer.js`
 - energie_storage `node storage.js`
 - generator_prod `node solar_panel.js`
+
+# BUILD AND RUN WITH DOCKER
+docker-compose --file docker-compose/local-dev.yml build && docker-compose --file docker-compose/local-dev.yml up --force-recreate
