@@ -218,7 +218,7 @@ export default {
   mounted () {
     this.connectToIOTA()
     let lastAddress = []
-	const ipMachine = '192.168.99.100'
+	const ipMachine = '192.168.99.114'
     this.ws = new WebSocketClient.w3cwebsocket('ws://' + ipMachine + ':3021', 'smart-grid');
     this.ws.onmessage = async (e) => { try {
       //console.log(e.data.toString());

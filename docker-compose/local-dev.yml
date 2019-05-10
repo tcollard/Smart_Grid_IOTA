@@ -64,7 +64,7 @@ services:
     depends_on:
       iota-sg-dev-front:
         condition: service_healthy
-  
+
   iota-sg-dev-storage:
     container_name: iota-sg-dev-storage
     image: iota-sg-dev-storage
@@ -81,7 +81,7 @@ services:
     depends_on:
       iota-sg-dev-producer:
         condition: service_started
-  
+
   iota-sg-dev-consumer:
     container_name: iota-sg-dev-consumer
     image: iota-sg-dev-consumer
