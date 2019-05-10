@@ -23,6 +23,7 @@ up:
 	docker-compose --file docker-compose/local-dev.yml up --force-recreate
 
 init:
+	@sh ./init.sh
 	@cd ./front && npm install
 	@cd ./server && npm install
 	@cd ./actors && npm install
